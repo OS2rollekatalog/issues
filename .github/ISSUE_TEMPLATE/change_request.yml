@@ -1,0 +1,300 @@
+name: Ændringsønske
+description: Foreslå ny funktionalitet eller forbedring
+title: Ændringsønske
+labels: ændringsønske
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Husk
+        Giv ændringsønsket en kort og præcis titel.
+        Beskriv ændringsønsket så konkret som muligt.
+        ⚠️ Oplys ikke følsomme persondata i denne formular.
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+
+  - type: checkboxes
+    id: request_quality_check
+    attributes:
+      label: Før du opretter ændringsønsket
+      description: |
+        Bekræft venligst følgende før du indsender ændringsønsket.
+      options:
+        - label: Jeg har beskrevet, hvilket problem eller behov vi oplever i dag.
+          required: true
+        - label: Jeg har forklaret, hvilken ændring eller forbedring jeg foreslår.
+          required: true
+        - label: Jeg har beskrevet, hvilken værdi ændringen forventes at skabe (fx bedre arbejdsgange, øget sikkerhed eller mindre manuelt arbejde).
+          required: true
+        - label: Jeg har tilføjet relevant kontekst, fx eksempler, berørte integrationer eller arbejdsgange.
+          required: true
+        - label: Jeg har undersøgt, om et lignende ændringsønske allerede findes.
+          required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+
+  - type: dropdown
+    id: jira_overfoert
+    attributes:
+      label: Er ændringsønsket overført fra JIRA-backlog?
+      options:
+        - Nej
+        - Ja
+    validations:
+      required: true
+
+  - type: input
+    id: jira_id
+    attributes:
+      label: JIRA ID (hvis relevant)
+      description: |
+        Hvis ændringsønsket er overført fra JIRA, angiv ID i formatet SOFD-xxx.
+        Ellers kan feltet efterlades tomt.
+      placeholder: fx SOFD-123
+    validations:
+      required: false 
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+
+        ### Kontaktperson (hvis der opstår spørgsmål)
+
+  - type: input
+    id: kontaktperson_navn
+    attributes:
+      label: Navn
+      placeholder: Indtast navn
+    validations:
+      required: true
+
+  - type: input
+    id: kontaktperson_mail
+    attributes:
+      label: Mail
+      placeholder: Indtast mailadresse
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kommune
+    attributes:
+      label: Kommune
+      description: |
+        Vælg den kommune ændringsønsket kommer fra.
+        Hvis afsender ikke er en kommune, vælg "Ikke kommune"
+        og udfyld feltet "Anden organisation / leverandør".
+      options:
+        - Albertslund
+        - Allerød
+        - Assens
+        - Ballerup
+        - Billund
+        - Bornholm
+        - Brøndby
+        - Brønderslev
+        - Dragør
+        - Egedal
+        - Esbjerg
+        - Fanø
+        - Favrskov
+        - Faxe
+        - Fredensborg
+        - Fredericia
+        - Frederiksberg
+        - Frederikshavn
+        - Frederikssund
+        - Furesø
+        - Gentofte
+        - Gladsaxe
+        - Glostrup
+        - Greve
+        - Gribskov
+        - Guldborgsund
+        - Haderslev
+        - Halsnæs
+        - Hedensted
+        - Helsingør
+        - Herlev
+        - Herning
+        - Hillerød
+        - Hjørring
+        - Holbæk
+        - Holstebro
+        - Horsens
+        - Hvidovre
+        - Høje-Taastrup
+        - Hørsholm
+        - Ikast-Brande
+        - Ishøj
+        - Jammerbugt
+        - Kalundborg
+        - Kerteminde
+        - Kolding
+        - Køge
+        - København
+        - Langeland
+        - Lejre
+        - Lemvig
+        - Lolland
+        - Lyngby-Taarbæk
+        - Læsø
+        - Mariagerfjord
+        - Middelfart
+        - Morsø
+        - Norddjurs
+        - Nordfyns
+        - Næstved
+        - Odder
+        - Odense
+        - Odsherred
+        - Randers
+        - Rebild
+        - Ringkøbing-Skjern
+        - Ringsted
+        - Roskilde
+        - Rudersdal
+        - Rødovre
+        - Samsø
+        - Silkeborg
+        - Skanderborg
+        - Skive
+        - Slagelse
+        - Solrød
+        - Sorø
+        - Stevns
+        - Struer
+        - Svendborg
+        - Syddjurs
+        - Sønderborg
+        - Thisted
+        - Tønder
+        - Tårnby
+        - Vallensbæk
+        - Varde
+        - Vejen
+        - Vejle
+        - Vesthimmerland
+        - Viborg
+        - Vordingborg
+        - Ærø
+        - Aabenraa
+        - Ikke kommune
+    validations:
+      required: true
+
+  - type: input
+    id: anden_org
+    attributes:
+      label: Anden organisation / leverandør
+      description: |
+        Udfyld dette felt, hvis afsender ikke er en kommune
+        (dvs. hvis du har valgt "Ikke kommune" ovenfor).
+      placeholder: Navn på organisation eller leverandør
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+
+        ### Ændringsønske
+
+  - type: textarea
+    id: forretningsbehov
+    attributes:
+      label: Forretningsbehov
+      description: |
+        Beskriv det bagvedliggende forretningsmæssige behov – ikke løsningen.
+
+        Besvar gerne:
+        - Hvilket konkret problem opleves i dag?
+        - Hvem er berørt (roller, medarbejdere, borgere)?
+        - Hvor ofte opstår problemet?
+        - Hvad er konsekvensen, hvis vi ikke ændrer noget?
+        - Er der tal, data eller eksempler der understøtter behovet?
+
+        Vær så konkret og målbar som muligt.
+      placeholder: |
+        Eksempel:
+        Sagsbehandlere bruger i gennemsnit 15 min ekstra pr. sag pga. manuel håndtering.
+        Dette påvirker ca. 120 sager pr. måned.
+    validations:
+      required: true
+
+  - type: textarea
+    id: beskrivelse
+    attributes:
+      label: Beskrivelse af ønsket ændring
+      description: |
+        Beskriv den ønskede ændring så konkret som muligt.
+
+        Besvar gerne:
+        - Hvordan fungerer det i dag?
+        - Hvad ønskes ændret eller tilføjet?
+        - Hvad skal systemet kunne (gerne konkrete punkter)?
+        - Hvornår vil løsningen være godkendt (acceptkriterier)?
+        - Er der kendte afgrænsninger?
+        
+        Acceptkriterier:
+        Beskriv hvornår løsningen er god nok til at blive godkendt.
+        Acceptkriterier er ikke nye krav, men en præcisering af hvornår de beskrevne funktioner anses som opfyldt.
+        
+        Undgå at gentage forretningsbehovet – fokusér på løsningen.
+      placeholder: |
+        Eksempel:
+        Der ønskes en automatisk validering som...
+        Løsningen er godkendt når...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: prioritet
+    attributes:
+      label: Oplevet prioritet
+      description: |
+        Vælg den prioritet du vurderer ændringsønsket har.
+
+        ⚠ Hvis du vælger Høj eller Kritisk prioritet,
+        skal feltet "Begrundelse" udfyldes
+        (ellers skriv "Ikke relevant").
+      options:
+        - Lav
+        - Mellem
+        - Høj
+        - Kritisk
+    validations:
+      required: true
+
+  - type: textarea
+    id: prioritet_begrundelse
+    attributes:
+      label: Begrundelse (påkrævet ved Høj eller Kritisk)
+      description: |
+        Skal begrundes hvis prioritet er Høj eller Kritisk.
+        Ved Lav eller Mellem kan du skrive: "Ikke relevant".
+
+        Beskriv gerne:
+        - Hvad stopper eller risikerer at stoppe?
+        - Er der lovkrav, deadlines eller økonomiske konsekvenser?
+        - Er borgere eller drift direkte påvirket?
+      placeholder: Beskriv hvorfor ændringen haster
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+
+        ### ⚠ VIGTIGT!
+        **Oplys ikke følsomme persondata i denne formular.**
